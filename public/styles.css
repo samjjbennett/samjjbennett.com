@@ -632,18 +632,11 @@ img {
   font-weight: 500;
 }
 
-.company-logo-placeholder {
+.company-logo {
   width: 48px;
   height: 48px;
-  border-radius: 12px;
-  background: var(--bg-secondary);
-  border: 1px solid var(--border);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 700;
-  font-size: 1.2rem;
-  color: var(--accent-2);
+  border-radius: 6px;
+  object-fit: cover;
   flex-shrink: 0;
 }
 
