@@ -43,6 +43,57 @@ function type() {
 type();
 
 // ========================================
+// Hero Glow Mouse Tracking
+// ========================================
+const hero = document.getElementById('hero');
+const glow1 = document.querySelector('.hero-glow-1');
+const glow2 = document.querySelector('.hero-glow-2');
+const glow3 = document.querySelector('.hero-glow-3');
+
+let mouseX = 0;
+let mouseY = 0;
+let currentX1 = 0, currentY1 = 0;
+let currentX2 = 0, currentY2 = 0;
+let currentX3 = 0, currentY3 = 0;
+
+hero.addEventListener('mousemove', (e) => {
+  const rect = hero.getBoundingClientRect();
+  mouseX = ((e.clientX - rect.left) / rect.width - 0.5) * 2;
+  mouseY = ((e.clientY - rect.top) / rect.height - 0.5) * 2;
+});
+
+hero.addEventListener('mouseleave', () => {
+  mouseX = 0;
+  mouseY = 0;
+});
+
+function animateGlows() {
+  const ease = 0.04;
+
+  const targetX1 = mouseX * 120;
+  const targetY1 = mouseY * 80;
+  currentX1 += (targetX1 - currentX1) * ease;
+  currentY1 += (targetY1 - currentY1) * ease;
+  glow1.style.transform = `translate(${currentX1}px, ${currentY1}px)`;
+
+  const targetX2 = mouseX * -100;
+  const targetY2 = mouseY * -60;
+  currentX2 += (targetX2 - currentX2) * ease;
+  currentY2 += (targetY2 - currentY2) * ease;
+  glow2.style.transform = `translate(${currentX2}px, ${currentY2}px)`;
+
+  const targetX3 = mouseX * 70 - 50;
+  const targetY3 = mouseY * 90 - 50;
+  currentX3 += (targetX3 - currentX3) * (ease * 0.7);
+  currentY3 += (targetY3 - currentY3) * (ease * 0.7);
+  glow3.style.transform = `translate(calc(-50% + ${currentX3}px), calc(-50% + ${currentY3}px))`;
+
+  requestAnimationFrame(animateGlows);
+}
+
+animateGlows();
+
+// ========================================
 // Navigation
 // ========================================
 const nav = document.getElementById('nav');
