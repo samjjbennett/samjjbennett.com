@@ -646,6 +646,12 @@ img {
   flex-shrink: 0;
 }
 
+.company-logo.logo-contain {
+  object-fit: contain;
+  filter: invert(1);
+  padding: 4px;
+}
+
 .card-role {
   color: var(--text-secondary);
   font-size: 0.95rem;
